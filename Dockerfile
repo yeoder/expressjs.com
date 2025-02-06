@@ -2,7 +2,7 @@
 FROM ruby:3.3.5
 
 # Install Jekyll and Bundler
-RUN gem install jekyll bundler
+RUN gem install bundler -v '2.4.10'
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -11,8 +11,7 @@ WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
 
 # Copy the Gemfile into the image
-COPY Gemfile ./
-COPY Gemfile.lock ./
+COPY Gemfile Gemfile.lock ./
 
 # Install the gems
 RUN bundle install --no-cache
